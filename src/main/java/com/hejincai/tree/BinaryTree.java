@@ -32,6 +32,7 @@ public class BinaryTree<T> {
     public void insert(T target){
         TreeNode<T> p=root;
         TreeNode<T> leaf = new TreeNode<>();
+        leaf.setParent(p);
         leaf.setData(target);
         while (p!=null){
             int compare = comparator.compare(target,p.getData());
@@ -91,14 +92,19 @@ public class BinaryTree<T> {
     }
 
     public TreeNode<T> findPre(TreeNode<T> currentNode){
-        TreeNode<T> p=currentNode;
+        TreeNode<T> p=currentNode.getLeft();
         while (p!=null){
             if (p.getRight()==null){
                 return p;
             }
             p=p.getRight();
         }
-        return null;
+        if (currentNode.getParent().getRight()==currentNode) {
+            return currentNode.getParent();
+        }
+
+        // 寻找父节点的父节点
+        return p;
     }
 
     public TreeNode<T> findPost(TreeNode<T> currentNode){
@@ -111,6 +117,13 @@ public class BinaryTree<T> {
             right=right.getRight();
         }
         return null;
+    }
+
+    public int height(TreeNode<T> node){
+        if (node==null){
+            return 0;
+        }
+        return Math.max(height(node.getLeft()),height(node.getRight()))+1;
     }
 
     public void delete(T target){

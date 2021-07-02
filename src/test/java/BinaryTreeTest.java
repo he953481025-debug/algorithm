@@ -55,4 +55,14 @@ public class BinaryTreeTest {
         TreeNode<Integer> integerTreeNode = binaryTree.findMin();
         System.out.println(integerTreeNode);
     }
+
+    @Test
+    public void testHeight(){
+//        binaryTree.insert(1);
+//        binaryTree.insert(-1);
+//        binaryTree.insert(3);
+        int height = binaryTree.height(binaryTree.getRoot());
+        System.out.println(binaryTree.getRoot());
+        System.out.println(height);
+    }
 }

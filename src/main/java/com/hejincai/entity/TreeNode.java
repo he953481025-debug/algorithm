@@ -13,6 +13,16 @@ public class TreeNode<T> {
 
     private TreeNode<T> right;
 
+    private TreeNode<T> parent;
+
+    public TreeNode<T> getParent() {
+        return parent;
+    }
+
+    public void setParent(TreeNode<T> parent) {
+        this.parent = parent;
+    }
+
     public T getData() {
         return data;
     }
@@ -43,6 +53,7 @@ public class TreeNode<T> {
                 "data=" + data +
                 ", left=" + left +
                 ", right=" + right +
+                ", parent=" +(parent==null?"null":parent.getData()+"")+
                 '}';
     }
 }
